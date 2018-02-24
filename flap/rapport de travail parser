@@ -1,0 +1,84 @@
+
+à faire :
+	-resoudre le problem de l'inderscor (il doit pas etre accepté)   -> Résolu
+	-finir la regle -> vdefinitin ; expression (fait)
+	-si les deux dessus sont faite complité expression 
+
+à faire :
+	-char est resolu sur Lexer (fait)
+	-string est resolu sur Lexer (fait)
+	-conflit resolu (fait)
+
+Travaille effectué sur expression : 
+	-int -> c fait
+	- exp :  type -> c fait
+	-var_id -> c fait 	
+	-const_id [type] (exp,exp..) -> c fait
+	-char -> à faire 
+	-string -> a verifier  	
+
+à faire :
+	-complété expression 
+	-brinch et brinches
+	-resoudre les conflit si y a ;) 
+
+************************************************************** Expressions *************************************************************************
+expr ::=
+-int -------------------------------------------------------------------------(fait) ------------Entier
+-char ------------------------------------------------------------------------(fait) ------------Caractère
+string -----------------------------------------------------------------------(fait) ------------Chaine de caractères
+var_id -----------------------------------------------------------------------(fait) ------------Variable
+constr_id [ [ type { , type } ] ] [ ( expr { , expr } ) ] --------------------(fait) ------------Construction d'une donnée étiquetée
+( expr : type ) --------------------------------------------------------------(fait) ------------TypeAnnotation
+expr { ; expr } --------------------------------------------------------------(fait) ------------Séquencement
+vdefinition ; expr  ----------------------------------------------------------(fait) ----------- Définition locale
+expr [ [ type { , type } ] ] ( expr { , expr } ) -----------------------------(fait) ------------Application
+\ [ [ type_variable { , type_variable } ] ] ( pattern { , pattern } ) => expr (fait) ------------Fonction anonyme
+expr binop expr --------------------------------------------------------------(fait) ------------Opérations binaires
+expr ? branches --------------------------------------------------------------(fait) ------------Analyse de motifs
+if expr then expr { elif expr then expr } [ else expr ] ----------------------(fait) ------------Conditionnelle
+ref expr ---------------------------------------------------------------------(fait) ------------Allocation
+expr := expr -----------------------------------------------------------------(fait) ------------Affectation
+! expr -----------------------------------------------------------------------(fait) ------------Lecture
+while expr { expr } ----------------------------------------------------------(fait) ------------Boucle
+( expr ) ---------------------------------------------------------------------(fait) ------------Prenthésage
+
+******************************************************************* Pattern ***************************************************************************
+
+pattern ::=
+
+-constr_id -------------------------------------------------------------------(fait) ------------Etiquette
+-var_id ----------------------------------------------------------------------(fait) ------------Motif universel liant
+-_ ---------------------------------------------------------------------------(fait) ------------Motif universel non liant
+-( pattern ) -----------------------------------------------------------------(fait) ------------Parenthésage
+-pattern : type --------------------------------------------------------------(fait) ------------Annotation de type
+-int -------------------------------------------------------------------------(fait) ------------Entier
+-char ------------------------------------------------------------------------(fait) ------------Caractère
+-string ----------------------------------------------------------------------(fait) ------------Chaîne de caractères
+-constr_id ( pattern { , pattern } ) -----------------------------------------(fait) ------------Valeurs étiquetées
+-pattern | pattern -----------------------------------------------------------(fait) ------------Disjonction
+-pattern & pattern -----------------------------------------------------------(fait) ------------Conjonction
+
+
+
+tout est fait 
+-à faire :
+-> les test sur duker du prof ;)  
+
+
+***************************************************************** HopixInterpreter **********************************************************************
+
+ajout de Literal of literal
+ajout de Varible of identifier 
+ajout de Apply of identifier * ty list * expression list ( rest a gérer l'application de fonction )
+------------------------------- creation de la memoire --------------------------------------------
+pour chaqu'un (ref , read, write) evaluer l'expression puis matcher sur le resultat si le resultat = VInt | VString |...|VFun x alors 
+|-> créer la memoire et retourner l'addresse 
+sinon failwith "ref need Literal"
+
+
+
+
+
+eof
+
