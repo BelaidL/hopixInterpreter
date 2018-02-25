@@ -101,6 +101,7 @@ and ty t = match t with
 	   ))
   | TyVar tvar ->
     type_variable tvar
+  | TyArrow(_,_) -> failwith "TODO PrittyPrinter"
 
 and mayparen_ty ctx a =
   match ctx, a with

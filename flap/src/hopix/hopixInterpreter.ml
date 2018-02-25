@@ -296,7 +296,7 @@ and know_fun run x e =
       with Environment.UnboundIdentifier (_,_) ->	
       {environment = bind_identifier run.environment x (VFun(lp,exp,run.environment))
 							  ; memory = run.memory}
-  | _ -> failwith "error functiondefintion"
+  | _ -> failwith "error function defintion"
 
 and finalruntime run run_final = function
   | [] -> run_final
@@ -378,7 +378,7 @@ and expression position environment memory = function
       begin match value_as_bool v with
       | None -> Printf.printf "Not valid While condition"; assert false
       (* mauvais typing ?? *)
-      | Some true -> expression' environment memory e ; eval_while (c,e)
+      | Some true -> let  _ = expression' environment memory e in eval_while (c,e)
       | Some false -> VUnit
       end
   in  eval_while (e1,e2)
@@ -392,7 +392,6 @@ and expression position environment memory = function
     let runtime = {environment = environment ; memory = memory} in
     let v = expression' environment memory e in
     branches runtime v lb
-  | _ -> failwith "Student! This is your job!"
 
 and branches runtime e lb =
   match lb with
@@ -448,10 +447,7 @@ and patterns p e runtime  =
 	    try
 	      aux (patterns p.value e run) qp
 	    with NoPatternMatch -> raise NoPatternMatch
-      in aux runtime p_list
-	(* warning unused *)
-  | _ -> raise NoPatternMatch
-	
+      in aux runtime p_list	
 
 and expressions environment memory es =
   let rec aux vs memory = function
